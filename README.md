@@ -24,7 +24,5 @@
   ```cmd
   java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.6.3.jar
   ```
-
-  
-
-  
+## 必要jar包下载
+[sentinel-dashboard-1.6.3.zip](https://github.com/reigadegr/spring_cloud_sentinel_demo/files/14914414/sentinel-dashboard-1.6.3.zip)
