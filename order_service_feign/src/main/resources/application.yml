@@ -16,7 +16,9 @@ spring:
     sentinel:
      transport:
       dashboard: localhost:8080   #sentinel控制台的请求地址
-
+  feign:
+    sentinel:
+      enabled: true
 #配置Eureka
 eureka:
   client:
@@ -24,6 +26,7 @@ eureka:
       defaultZone: http://localhost:9000/eureka/,http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true #使用ip地址注册
+#激活sentinel的支持
 
 
 
