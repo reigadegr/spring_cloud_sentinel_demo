@@ -15,4 +15,16 @@
 
 - 因为懒加载，所以必须访问后才能看见新增的项目
 
+
+
+## 如何启动sentinel-dashboard-1.6.3？
+
+- 通过这条命令：
+
+  ```cmd
+  java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.6.3.jar
+  ```
+
+  
+
   
