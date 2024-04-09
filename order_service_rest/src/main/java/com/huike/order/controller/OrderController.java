@@ -17,29 +17,29 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/order")
 public class OrderController {
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@SentinelResource(blockHandler = "orderBlockHandler",fallback = "orderFallback")
-	@RequestMapping(value = "/buy/{id}",method = RequestMethod.GET)
-	public Product findById(@PathVariable Long id) {
-		if(id != 2) {
-			throw new RuntimeException("错误");
-		}
-		return restTemplate.getForObject("http://service-product/product/"+id,Product.class);
-	}
+    @SentinelResource(value = "orderFindById", blockHandler = "orderBlockHandler", fallback = "orderFallback")
+    @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
+    public Product findById(@PathVariable Long id) {
+        if (id != 2) {
+            throw new RuntimeException("错误");
+        }
+        return restTemplate.getForObject("http://service-product/product/" + id, Product.class);
+    }
 
 
-	public Product orderBlockHandler(Long id) {
-		Product product = new Product();
-		product.setProductName("触发熔断的降级方法");
-		return product;
-	}
+    public Product orderBlockHandler(Long id) {
+        Product product = new Product();
+        product.setProductName("触发熔断的降级方法");
+        return product;
+    }
 
-	public Product orderFallback(Long id) {
-		Product product = new Product();
-		product.setProductName("抛出异常执行的降级方法");
-		return product;
-	}
+    public Product orderFallback(Long id) {
+        Product product = new Product();
+        product.setProductName("抛出异常执行的降级方法");
+        return product;
+    }
 
 }
