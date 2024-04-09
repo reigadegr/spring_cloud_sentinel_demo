@@ -1,5 +1,6 @@
 package com.huike.order.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.huike.order.entity.Product;
 
 
@@ -19,7 +20,7 @@ public class OrderController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-
+	@SentinelResource(blockHandler = "orderBlockHandler",fallback = "orderFallback")
 	@RequestMapping(value = "/buy/{id}",method = RequestMethod.GET)
 	public Product findById(@PathVariable Long id) {
 		if(id != 2) {
@@ -29,5 +30,16 @@ public class OrderController {
 	}
 
 
+	public Product orderBlockHandler(Long id) {
+		Product product = new Product();
+		product.setProductName("触发熔断的降级方法");
+		return product;
+	}
+
+	public Product orderFallback(Long id) {
+		Product product = new Product();
+		product.setProductName("抛出异常执行的降级方法");
+		return product;
+	}
 
 }

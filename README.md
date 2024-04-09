@@ -26,3 +26,5 @@
   ```
 ## 必要jar包下载
 [sentinel-dashboard-1.6.3.zip](https://github.com/reigadegr/spring_cloud_sentinel_demo/files/14914414/sentinel-dashboard-1.6.3.zip)
+
+把zip后缀改jar
