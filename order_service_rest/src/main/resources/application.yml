@@ -16,6 +16,13 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8080   #sentinel控制台的请求地址
+      datasource:
+        ds1:
+         file:
+          file: classpath:flowrule.json
+          data-type: json
+          rule-type: flow
+      eager: true #立即加载
 
 #配置Eureka
 eureka:
