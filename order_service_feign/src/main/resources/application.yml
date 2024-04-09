@@ -12,7 +12,10 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
-
+  cloud:
+    sentinel:
+     transport:
+      dashboard: localhost:8080   #sentinel控制台的请求地址
 
 #配置Eureka
 eureka:
