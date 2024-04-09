@@ -1,6 +1,8 @@
 package com.huike.order;
 
 
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
+import com.huike.order.exception.ExceptionUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,7 +14,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EntityScan("com.huike.order.entity")
 public class RestOrderApplication {
-
+	@SentinelRestTemplate(fallbackClass = ExceptionUtils.class,fallback =
+			"handleFallback",
+			blockHandler = "handleBlock" ,blockHandlerClass = ExceptionUtils.class
+	)
 
 	@LoadBalanced
 	@Bean

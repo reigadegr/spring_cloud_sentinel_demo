@@ -20,7 +20,7 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @SentinelResource(value = "orderFindById", blockHandler = "orderBlockHandler", fallback = "orderFallback")
+//    @SentinelResource(value = "orderFindById", blockHandler = "orderBlockHandler", fallback = "orderFallback")
     @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
     public Product findById(@PathVariable Long id) {
         if (id != 2) {
